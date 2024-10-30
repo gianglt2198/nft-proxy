@@ -1,9 +1,10 @@
 package services
 
 import (
+	"sync/atomic"
+
 	nft_proxy "github.com/alphabatem/nft-proxy"
 	"github.com/babilu-online/common/context"
-	"sync/atomic"
 )
 
 type StatService struct {

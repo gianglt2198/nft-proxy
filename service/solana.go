@@ -3,17 +3,17 @@ package services
 import (
 	ctx "context"
 	"errors"
+	"log"
+	"os"
+	"strings"
+
 	nft_proxy "github.com/alphabatem/nft-proxy"
 	"github.com/alphabatem/nft-proxy/metaplex_core"
 	token_metadata "github.com/alphabatem/nft-proxy/token-metadata"
-	"github.com/alphabatem/token_2022_go"
 	"github.com/babilu-online/common/context"
 	bin "github.com/gagliardetto/binary"
 	"github.com/gagliardetto/solana-go"
 	"github.com/gagliardetto/solana-go/rpc"
-	"log"
-	"os"
-	"strings"
 )
 
 type SolanaService struct {
@@ -38,6 +38,7 @@ func (svc *SolanaService) Client() *rpc.Client {
 }
 
 func (svc *SolanaService) RecentBlockhash() (solana.Hash, error) {
+	// we should use the context from params to cancel the request if needed
 	bhash, err := svc.Client().GetRecentBlockhash(ctx.Background(), rpc.CommitmentFinalized)
 	if err != nil {
 		return solana.Hash{}, err

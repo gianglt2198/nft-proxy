@@ -3,9 +3,6 @@ package services
 import (
 	"errors"
 	"fmt"
-	"github.com/babilu-online/common/context"
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"log"
 	"math/rand"
@@ -13,6 +10,10 @@ import (
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/babilu-online/common/context"
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 // @title NFT Aggregator Swap API

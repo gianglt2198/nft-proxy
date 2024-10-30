@@ -4,16 +4,17 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-	nft_proxy "github.com/alphabatem/nft-proxy"
-	"github.com/babilu-online/common/context"
-	"github.com/gagliardetto/solana-go"
-	"github.com/gin-gonic/gin"
 	"io"
 	"log"
 	"net/http"
 	"os"
 	"strings"
 	"time"
+
+	nft_proxy "github.com/alphabatem/nft-proxy"
+	"github.com/babilu-online/common/context"
+	"github.com/gagliardetto/solana-go"
+	"github.com/gin-gonic/gin"
 )
 
 type ImageService struct {
@@ -43,7 +44,8 @@ func (svc *ImageService) Start() error {
 
 	svc.httpMedia = &http.Client{Timeout: 10 * time.Second}
 
-	svc.defaultSize = 720 //Gifs will be half the size
+	// Default size should be 500 for all images cached
+	svc.defaultSize = 500 //Gifs will be half the size
 
 	svc.exemptImages = map[string]struct{}{
 		"2kMpEJCZL8vEDZe7YPLMCS9Y3WKSAMedXBn7xHPvsWvi": {},

@@ -2,19 +2,21 @@ package services
 
 import (
 	"bytes"
-	"github.com/babilu-online/common/context"
-	"github.com/nfnt/resize"
-	"golang.org/x/image/draw"
 	"image"
 	"image/color/palette"
 	"image/gif"
 	"log"
 
-	_ "golang.org/x/image/vp8"
-	_ "golang.org/x/image/webp"
+	"github.com/babilu-online/common/context"
+	"github.com/nfnt/resize"
+	"golang.org/x/image/draw"
+
 	"image/jpeg"
 	"image/png"
 	"io"
+
+	_ "golang.org/x/image/vp8"
+	_ "golang.org/x/image/webp"
 )
 
 type ResizeService struct {
@@ -46,7 +48,8 @@ func (svc *ResizeService) Resize(data []byte, out io.Writer, size int) error {
 		return gif.EncodeAll(out, g2)
 	}
 
-	// Resize:
+	// Resize: 0 means keep aspect ratio and resize to the given height
+	// It maybe better if we can resize to the given width and height
 	dst := resize.Resize(0, uint(size), src, resize.MitchellNetravali)
 
 	switch typ {

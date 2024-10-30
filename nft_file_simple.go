@@ -17,6 +17,7 @@ type NFTMetadataSimple struct {
 	Files []NFTFiles `json:"files"`
 
 	UpdateAuthority string `json:"updateAuthority"`
+	Mint            string `json:"mint"`
 }
 
 func (m *NFTMetadataSimple) AnimationFile() *NFTFiles {
